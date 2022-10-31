@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Student < Person
   def initialize(name, age, parent_permission, classroom)
     super(name, age, parent_permission)
