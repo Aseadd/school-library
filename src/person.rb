@@ -2,18 +2,23 @@ require './src/nameable'
 require './src/capitalize'
 require './src/trimmer'
 require './src/base_decorator'
+require './src/book'
+require './src/rental'
+require './src/class_room'
+require './src/student'
 
 class Person < Nameable
+  attr_reader :rental, :id
+  attr_accessor :name, :age
+
   def initialize(age, name = 'Unkown', parent_permission: true)
     super()
     @id = Random.rand(1...1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rental = []
   end
-
-  attr_accessor :name, :age
-  attr_reader :id
 
   private
 
@@ -33,6 +38,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(date, book)
+    @rental = Rental.new(date, book, self)
   end
 end
 
