@@ -1,8 +1,11 @@
+require './src/person'
+
 class Student < Person
   attr_reader :classroom
 
   def initialize(age, classroom, name = 'Unknown', parent_permission: true)
-    super(name, age, parent_permission)
+    super(name, age)
+    @parent_permission = parent_permission
     @classroom = classroom
   end
 
@@ -10,8 +13,8 @@ class Student < Person
     '¯\(ツ)/¯'
   end
 
-  def classroom=(classroom)
-    @classroom = classroom
-    classroom.students << self unless classroom.students.include?(self)
+  def update_classroom(new_classroom)
+    @classroom = new_classroom
+    new_classroom.students.pysh(self) unless new_classroom.students.include?(self)
   end
 end
