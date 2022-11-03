@@ -34,6 +34,11 @@ To get a local copy up and running follow these simple steps.
 ```sh
   code .
 ```
+- **To execute the program**
+
+```sh
+  ruby src/main.rb
+```
 
 ## Built With
 
