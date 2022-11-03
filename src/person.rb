@@ -1,11 +1,5 @@
+#!/usr/bin/env ruby
 require './src/nameable'
-require './src/capitalize'
-require './src/trimmer'
-require './src/base_decorator'
-require './src/book'
-require './src/rental'
-require './src/class_room'
-require './src/student'
 
 class Person < Nameable
   attr_reader :rental, :id
@@ -41,13 +35,6 @@ class Person < Nameable
   end
 
   def add_rental(date, book)
-    @rental = Rental.new(date, book, self)
+    Rental.new(date, book, self)
   end
 end
-
-person = Person.new(22, 'maximilianus')
-puts person.correct_name
-capitalized_person = Capitalizer.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = Trimmer.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
