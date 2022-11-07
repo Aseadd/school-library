@@ -3,6 +3,7 @@ require './src/book'
 require './src/person'
 require './src/book_operations'
 require './src/person_operations'
+require './src/modules/list'
 
 class RentalOperations
     attr_reader :rentals, :books, :people
@@ -12,6 +13,8 @@ class RentalOperations
         @books = books
         @people = people
     end
+
+  include List
 
     def create_rental
         puts 'Select a book from the following list by number'
@@ -38,18 +41,6 @@ class RentalOperations
 
     end
 
-    def list_all_rentals_for_person_id
-        print 'ID of person: '
-        id = gets.chomp.to_i
     
-        rentals = @rentals.filter { |rental| rental.person.id == id }
-    
-        puts 'Rentals:'
-        puts '========================================================================'
-        rentals.each do |rental|
-          puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
-        end
-        puts '========================================================================'
-      end
 
 end

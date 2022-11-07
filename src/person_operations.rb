@@ -1,9 +1,12 @@
 require './src/person'
+require './src/modules/list'
 
 class PersonOperations
     def initialize(person)
         @people = person
     end
+
+  include List
 
     def create_person
         print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
@@ -34,12 +37,5 @@ class PersonOperations
     puts 'Person created successfully'
     end
 
-    def list_all_people
-        puts 'There are no people yet. Kindly Create people' if @people.empty?
-        puts ' ====================================================================================='
-        @people.each do |person|
-          puts "Type: #{person.class}, Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-        end
-        puts ' ====================================================================================='
-      end
+    
 end
