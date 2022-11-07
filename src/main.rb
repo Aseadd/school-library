@@ -47,10 +47,10 @@ class Main
           puts 'Invalid option'
           return
         end
-    
+
         print 'Age: '
         age = gets.chomp
-    
+
         print 'Name: '
         name = gets.chomp
         if person_type == '1'
@@ -66,7 +66,7 @@ class Main
       when '4'
         print 'Title: '
         title = gets.chomp
-    
+
         print 'Author: '
         author = gets.chomp
         @books.create_book(title, author)
@@ -75,7 +75,7 @@ class Main
         @book.each_with_index do |book, index|
           puts "#{index}) #{book} Tiltle: #{book.title}, Author: #{book.author}"
         end
-       
+
         puts
         puts 'Select a person from the following list by number (not id)'
         puts '========================================================================'
@@ -87,7 +87,7 @@ class Main
         puts 'Index of the book: '
         book_index = gets.chomp.to_i
         print 'Index of the person: '
-        person_index= gets.chomp.to_i
+        person_index = gets.chomp.to_i
 
         print 'Date: '
         date = gets.chomp
