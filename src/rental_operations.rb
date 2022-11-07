@@ -6,18 +6,18 @@ require './src/person_operations'
 require './src/modules/list'
 
 class RentalOperations
-    attr_reader :rentals, :books, :people
+  attr_reader :rentals, :books, :people
 
-    def initialize(rentals, books, people)
-        @rentals = rentals
-        @books = books
-        @people = people
-    end
+  def initialize(rentals, books, people)
+    @rentals = rentals
+    @books = books
+    @people = people
+  end
 
   include List
 
-    def create_rental
-        puts 'Select a book from the following list by number'
+  def create_rental
+    puts 'Select a book from the following list by number'
     @books.each_with_index do |book, index|
       puts "#{index}) #{book} Tiltle: #{book.title}, Author: #{book.author}"
     end
@@ -38,9 +38,5 @@ class RentalOperations
 
     @rentals.push(Rental.new(date, @books[book_index], @people[person_index]))
     puts 'Rental created successfully'
-
-    end
-
-    
-
+  end
 end

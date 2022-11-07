@@ -14,5 +14,4 @@ class App
     @rentals = RentalOperations.new([])
     @class = Classroom.new('Class 1')
   end
-
 end

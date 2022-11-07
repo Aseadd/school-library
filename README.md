@@ -47,6 +47,12 @@ To get a local copy up and running follow these simple steps.
 - Twitter: [@AdaTsega](https://twitter.com/AdaTsega)
 - LinkedIn: [Addis Tsega](https://www.linkedin.com/in/addis-tsega/)
 
+### 👤 Promise Uka
+
+- GitHub: [@Ukaypromise](https://github.com/Ukaypromise)
+- Twitter: [@PromiseUkay](https://twitter.com/PromiseUkay)
+- LinkedIn: [@promiseuka](https://www.linkedin.com/in/promiseuka/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
