@@ -5,10 +5,21 @@ require './src/student'
 require './src/teacher'
 require './src/person'
 require './src/app'
+require './src/book_operations'
+require './src/rental_operations'
+require './src/person_operations'
 # rubocop:disable Metrics
-
+class Main
+  def initialize
+    @book = []
+    @person = []
+    @rental = []
+    @books = BookOerations.new(@book)
+    @people = PersonOperations.new(@person)
+    @rentals = RentalOperations.new(@rental, @book, @person)
+    @class = Classroom.new('Class 1')
+  end
 def main
-  app = App.new
   puts 'Welcome to School Library App!'
   option = nil
   while option != '7'
@@ -25,17 +36,17 @@ def main
     option = gets.chomp
     case option
     when '1'
-      app.list_all_books
+      @books.list_all_books
     when '2'
-      app.list_all_people
+      @people.list_all_people
     when '3'
-      app.create_person
+      @people.create_person
     when '4'
-      app.create_book
+      @books.create_book
     when '5'
-      app.create_rental
+      @rentals.create_rental
     when '6'
-      app.list_all_rentals_for_person_id
+      @rentals.list_all_rentals_for_person_id
     when '7'
       puts 'Thank you for using this app!'
     else
@@ -44,5 +55,6 @@ def main
   end
 end
 # rubocop:enable Metrics
-
-main
+end
+main = Main.new
+main.main
