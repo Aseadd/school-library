@@ -11,6 +11,7 @@ require './src/rental_operations'
 require './src/person_operations'
 require './src/persist_book'
 require './src/persist_person'
+require './src/persist_rental'
 
 # rubocop:disable Metrics
 class Main
@@ -24,6 +25,8 @@ class Main
     @class = Classroom.new('Class 1')
     @book_json = PersistBook.new(@book)
     @people_json = Persistperson.new(@person)
+    @rental_json = PersistRental.new(@rental)
+
   end
 
   def main
@@ -83,6 +86,7 @@ class Main
         @books.create_book(title, author)
         @book_json.persist_book(title, author)
       when '5'
+        @rental_json.read_rental_data
         puts 'Select a book from the following list by number'
         @book.each_with_index do |book, index|
           puts "#{index}) #{book} Tiltle: #{book.title}, Author: #{book.author}"
@@ -105,6 +109,7 @@ class Main
         date = gets.chomp
 
         @rentals.create_rental(date, book_index, person_index)
+        @rental_json.persist_rental_data(book_index, person_index, date)
       when '6'
         @rentals.list_all_rentals_for_person_id
       when '7'
