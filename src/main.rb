@@ -1,3 +1,4 @@
+require 'json'
 require './src/book'
 require './src/rental'
 require './src/class_room'
@@ -8,6 +9,9 @@ require './src/app'
 require './src/book_operations'
 require './src/rental_operations'
 require './src/person_operations'
+require './src/persist_book'
+require './src/persist_person'
+
 # rubocop:disable Metrics
 class Main
   def initialize
@@ -18,6 +22,8 @@ class Main
     @people = PersonOperations.new(@person)
     @rentals = RentalOperations.new(@rental, @book, @person)
     @class = Classroom.new('Class 1')
+    @book_json = PersistBook.new(@book)
+    @people_json = Persistperson.new(@person)
   end
 
   def main
@@ -41,6 +47,8 @@ class Main
       when '2'
         @people.list_all_people
       when '3'
+
+        @people_json.read_people_info
         print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
         person_type = gets.chomp
         if person_type != '1' && person_type != '2'
@@ -58,18 +66,22 @@ class Main
           parent_permission = gets.chomp
           parent_permission = parent_permission.downcase == 'y'
           @people.create_student(name, parent_permission, age)
+          @people_json.persist_people_student('Student', name, parent_permission, age)
         else
           print 'Specialization: '
           specialization = gets.chomp
           @people.create_person(name, specialization, age)
+          @people_json.persist_people_data('Teacher', name, specialization, age)
         end
       when '4'
+        @book_json.read_book_data
         print 'Title: '
         title = gets.chomp
 
         print 'Author: '
         author = gets.chomp
         @books.create_book(title, author)
+        @book_json.persist_book(title, author)
       when '5'
         puts 'Select a book from the following list by number'
         @book.each_with_index do |book, index|
