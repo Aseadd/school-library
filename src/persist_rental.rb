@@ -19,7 +19,6 @@ class PersistRental
   def read_rental_data
     puts '=================Rental List ==================='
     return [] unless File.exist?('./src/rentals.json')
-
     rental_data = File.read('./src/rentals.json')
     rental_list = JSON.parse(rental_data)
     rental_list.each_with_index do |rental, index|

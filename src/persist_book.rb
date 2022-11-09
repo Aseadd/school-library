@@ -11,7 +11,6 @@ class PersistBook
   def read_book_data
     puts "=================Book's list ==================="
     return [] unless File.exist?('./src/books.json')
-
     book_data = File.read('./src/books.json')
     book_list = JSON.parse(book_data)
     book_list.each_with_index do |book, index|
