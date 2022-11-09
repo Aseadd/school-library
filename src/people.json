@@ -1,0 +1,68 @@
+[
+  {
+    "person type": "student",
+    "name": "Promise Uka",
+    "parent permission": true,
+    "age": 24
+  },
+  {
+    "person type": "student",
+    "name": "Addis Tsega",
+    "parent permission": true,
+    "age": 25
+  },
+  {
+    "person type": "student",
+    "name": "Ak Ak",
+    "parent permission": true,
+    "age": 13
+  },
+  {
+    "person type": "Teacher",
+    "name": "Micheal",
+    "specialization": "Astro Physics",
+    "age": "27"
+  },
+  {
+    "person type": "Teacher",
+    "name": "Oliver",
+    "specialization": "Football",
+    "age": "76"
+  },
+  {
+    "person type": "Student",
+    "name": "Lily",
+    "parent permission": true,
+    "age": "12"
+  },
+  {
+    "person type": "Student",
+    "name": "Alex",
+    "parent permission": true,
+    "age": "15"
+  },
+  {
+    "person type": "Teacher",
+    "name": "Scot",
+    "specialization": "Sociology",
+    "age": "73"
+  },
+  {
+    "person type": "Student",
+    "name": "Tsega Arragie",
+    "parent permission": true,
+    "age": "16"
+  },
+  {
+    "person type": "Student",
+    "name": "Matias",
+    "parent permission": true,
+    "age": "25"
+  },
+  {
+    "person type": "Student",
+    "name": "John",
+    "parent permission": true,
+    "age": "14"
+  }
+]

@@ -4,6 +4,9 @@ require './src/person'
 require './src/book_operations'
 require './src/person_operations'
 require './src/modules/list'
+require './src/persist_book'
+require './src/persist_person'
+require './src/persist_rental'
 
 class RentalOperations
   attr_reader :rentals, :books, :people
