@@ -9,11 +9,18 @@ class Persistperson
   include List
 
   def read_people_info
+    puts "===============People's list==============="
+    if File.exist?('./src/people.json')
     people_json = File.read('./src/people.json')
     people_info = JSON.parse(people_json)
+    
     people_info.each_with_index do |person, index|
       puts "#{index} Person Type: #{person['person type']} Name: #{person['name']} Age: #{person['age']}"
     end
+    else
+        return []
+    end
+    puts "===================End of Book List ======================"
   end
 
   def persist_people_data(person_type, name, specialization, age)

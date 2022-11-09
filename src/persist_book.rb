@@ -9,11 +9,13 @@ class PersistBook
   include List
 
   def read_book_data
-    book_data = File.read('./src/books.json')
+    puts "=================Book's list ==================="
+    book_data = File.read('./src/books.json') unless File.zero?('./src/books.json')
     book_list = JSON.parse(book_data)
     book_list.each_with_index do |book, index|
       puts "#{index} Title: #{book['title']} Author: #{book['author']}}"
     end
+    puts "=================End of People List ==================="
   end
 
   def persist_book(title, author)
