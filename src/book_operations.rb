@@ -11,7 +11,7 @@ class BookOerations
 
   def create_book(title, author)
     @books.push(Book.new(title, author))
-    
+
     puts 'Book created successfully'
   end
 end

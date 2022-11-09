@@ -1,10 +1,11 @@
+require './src/persist_rental'
+
 class Book
   attr_accessor :rental, :title, :author
 
   def initialize(title, author)
     @title = title
     @author = author
-    @rental = []
   end
 
   def add_rental(date, person)

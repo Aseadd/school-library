@@ -54,9 +54,15 @@
     "age": "16"
   },
   {
-    "person type": "Teacher",
-    "name": "Alexander mose",
-    "specialization": "Astro physics",
-    "age": "54"
+    "person type": "Student",
+    "name": "Matias",
+    "parent permission": true,
+    "age": "25"
+  },
+  {
+    "person type": "Student",
+    "name": "John",
+    "parent permission": true,
+    "age": "14"
   }
 ]

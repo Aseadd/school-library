@@ -16,8 +16,11 @@ require './src/persist_rental'
 # rubocop:disable Metrics
 class Main
   def initialize
-    @book = []
-    @person = []
+    @book_collection = PersistBook.new('books.json')
+    @people_collection = Persistperson.new('people.json')
+
+    @book = @book_collection.read_book_data
+    @person = @people_collection.read_people_info
     @rental = []
     @books = BookOerations.new(@book)
     @people = PersonOperations.new(@person)
@@ -26,7 +29,6 @@ class Main
     @book_json = PersistBook.new(@book)
     @people_json = Persistperson.new(@person)
     @rental_json = PersistRental.new(@rental, @book, @person)
-
   end
 
   def main
@@ -87,20 +89,20 @@ class Main
         @book_json.persist_book(title, author)
       when '5'
         @rental_json.read_rental_data
-        
+
         puts 'Select a book from the following list by number'
-         @book_json.read_book_data
+        @book_json.read_book_data
         # @book.each_with_index do |book, index|
-        #   puts "#{index}) #{book} Tiltle: #{book.title}, Author: #{book.author}"
+        #   puts "#{index} Title: #{book['title']} Author: #{book['author']}"
         # end
 
         puts
         puts 'Select a person from the following list by number (not id)'
         puts '========================================================================'
         @people_json.read_people_info
-        
+
         # @person.each_with_index do |person, index|
-        #   puts "#{index}) #{person} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        #   puts "#{index} Person Type: #{person['person type']} Name: #{person['name']} Age: #{person['age']}"
         # end
         puts '========================================================================'
 
@@ -113,9 +115,11 @@ class Main
         date = gets.chomp
 
         @rentals.create_rental(date, book_index, person_index)
-        @rental_json.persist_rental_data(date, book_index, person_index)
+        @rental_json.save_rental_data(date, book_index, person_index)
       when '6'
-        @rentals.list_all_rentals_for_person_id
+        puts 'List of Rentals '
+        @rental_json.read_rental_data
+
       when '7'
         puts 'Thank you for using this app!'
       else
