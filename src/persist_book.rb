@@ -10,12 +10,14 @@ class PersistBook
 
   def read_book_data
     puts "=================Book's list ==================="
-    book_data = File.read('./src/books.json') unless File.zero?('./src/books.json')
+    return [] unless File.exist?('./src/books.json')
+
+    book_data = File.read('./src/books.json')
     book_list = JSON.parse(book_data)
     book_list.each_with_index do |book, index|
       puts "#{index} Title: #{book['title']} Author: #{book['author']}}"
     end
-    puts "=================End of People List ==================="
+    puts '=================End of People List ==================='
   end
 
   def persist_book(title, author)

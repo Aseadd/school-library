@@ -18,17 +18,15 @@ class PersistRental
 
   def read_rental_data
     puts '=================Rental List ==================='
-    if File.exist?('./src/rentals.json')
+    return [] unless File.exist?('./src/rentals.json')
+
     rental_data = File.read('./src/rentals.json')
     rental_list = JSON.parse(rental_data)
     rental_list.each_with_index do |rental, index|
       print "#{index} Date: #{rental['date']} Author: #{rental['author']} "
       puts "Title: #{rental['title']} Name: #{rental['name']}"
     end
-    else
-      return []
-    end
-    puts "===================End of Rental List ======================"
+    puts '===================End of Rental List ======================'
   end
 
   def save_rental_data(date, book_index, person_index)
